@@ -29,12 +29,8 @@ class Home extends Component {
       });
   }
 
-  pressHandler = () => {
-    this.props.navigation.push('ReviewDetails');
-  };
-
-  pressItem = (id) => {
-    this.props.navigation.push('ReviewDetails');
+  pressItem = (item) => {
+    this.props.navigation.push('ReviewDetails', item);
   };
 
   onChange = (e) => {
@@ -51,12 +47,6 @@ class Home extends Component {
     } else {
       return (
         <View style={styles.container}>
-          <Button
-            style={styles.button}
-            title="go to review page"
-            onPress={this.pressHandler}
-          />
-
           <Text>Enter name: {this.state.name}</Text>
           <TextInput
             style={styles.input}
@@ -74,7 +64,7 @@ class Home extends Component {
           <FlatList
             data={this.state.data}
             renderItem={({item}) => (
-              <TouchableOpacity onPress={() => this.pressItem(item.id)}>
+              <TouchableOpacity onPress={() => this.pressItem(item)}>
                 <Text style={styles.item}>
                   {item.id} {item.title}
                 </Text>
@@ -94,6 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
   input: {
     borderWidth: 1,

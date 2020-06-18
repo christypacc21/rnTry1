@@ -1,34 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-class ReviewDetails extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userId: 0,
-      id: 0,
-      title: '',
-      body: '',
-    };
-  }
-  onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value});
-  };
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>reviewdetails</Text>
-      </View>
-    );
-  }
-}
+const ReviewDetails = ({navigation}) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.item}>Reviewdetails</Text>
+
+      <Text style={styles.item}>UserID: {navigation.getParam('userId')}</Text>
+      <Text style={styles.item}>PostID: {navigation.getParam('id')}</Text>
+      <Text style={styles.item}>Title: {navigation.getParam('title')}</Text>
+      <Text style={styles.item}>Content: {navigation.getParam('body')}</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 30,
+  },
+  item: {
+    margin: 15,
   },
 });
 
